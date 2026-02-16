@@ -1,0 +1,16 @@
+.venv/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+.git/
+.gitignore
+
+data/marketcap.db
+data/*.db
+data/*.db-*
+data/*.sqlite
+data/*.sqlite3
+
+*.log

@@ -1,0 +1,1351 @@
+{
+  "AAPL": {
+    "name_en": "Apple Inc.",
+    "name_ko": "애플"
+  },
+  "ABBV": {
+    "name_en": "AbbVie Inc.",
+    "name_ko": "애브비"
+  },
+  "ABEV": {
+    "name_ko": "암베브 ADR"
+  },
+  "ABNB": {
+    "name_en": "Airbnb, Inc.",
+    "name_ko": "에어비앤비"
+  },
+  "ABT": {
+    "name_en": "Abbott Laboratories",
+    "name_ko": "애보트 래보라토리"
+  },
+  "ACN": {
+    "name_en": "Accenture plc",
+    "name_ko": "액센추어"
+  },
+  "ADBE": {
+    "name_en": "Adobe Inc.",
+    "name_ko": "어도비"
+  },
+  "ADI": {
+    "name_en": "Analog Devices, Inc.",
+    "name_ko": "애널로그 디바이시스"
+  },
+  "ADP": {
+    "name_en": "Automatic Data Processing, Inc.",
+    "name_ko": "오토매틱 데이터 프로세싱"
+  },
+  "ADSK": {
+    "name_ko": "오토데스크"
+  },
+  "AEM": {
+    "name_en": "Agnico Eagle Mines Limited",
+    "name_ko": "애그니코 이글 마인스"
+  },
+  "AEP": {
+    "name_en": "American Electric Power Company",
+    "name_ko": "아메리칸 일렉트릭 파워 컴퍼니"
+  },
+  "AFL": {
+    "name_ko": "애플랙",
+    "name_en": "Aflac Inc"
+  },
+  "AJG": {
+    "name_ko": "아서 J 갤러거 앤 코",
+    "name_en": "Arthur J. Gallagher & Co."
+  },
+  "ALL": {
+    "name_ko": "올스테이트",
+    "name_en": "Allstate Corp"
+  },
+  "AMAT": {
+    "name_en": "Applied Materials, Inc.",
+    "name_ko": "어플라이드 머티어리얼즈"
+  },
+  "AMD": {
+    "name_en": "Advanced Micro Devices, Inc.",
+    "name_ko": "AMD(어드밴스드 마이크로 디바이시스)"
+  },
+  "AME": {
+    "name_ko": "아메텍",
+    "name_en": "AMETEK Inc"
+  },
+  "AMGN": {
+    "name_en": "Amgen Inc.",
+    "name_ko": "암젠"
+  },
+  "AMT": {
+    "name_en": "American Tower Corporation (REI",
+    "name_ko": "아메리칸 타워"
+  },
+  "AMX": {
+    "name_en": "America Movil, S.A.B. de C.V.",
+    "name_ko": "아메리카 모빌 ADR 시리즈 L"
+  },
+  "AMZN": {
+    "name_en": "Amazon.com, Inc.",
+    "name_ko": "아마존닷컴"
+  },
+  "ANET": {
+    "name_en": "Arista Networks, Inc.",
+    "name_ko": "아리스타 네트웍스"
+  },
+  "AON": {
+    "name_en": "Aon plc",
+    "name_ko": "에이온"
+  },
+  "APD": {
+    "name_ko": "에어 프로덕츠 앤 케미컬스",
+    "name_en": "Air Products and Chemicals Inc"
+  },
+  "APH": {
+    "name_en": "Amphenol Corporation",
+    "name_ko": "암페놀"
+  },
+  "APO": {
+    "name_en": "Apollo Global Management, Inc.",
+    "name_ko": "아폴로 글로벌 매니지먼트"
+  },
+  "APP": {
+    "name_en": "Applovin Corporation",
+    "name_ko": "앱러빈"
+  },
+  "ARGX": {
+    "name_ko": "아겐스 ADR",
+    "name_en": "argenx SE ADR"
+  },
+  "ARM": {
+    "name_en": "Arm Holdings plc",
+    "name_ko": "암 홀딩스 ADR"
+  },
+  "ASML": {
+    "name_en": "ASML Holding N.V. - New York Re",
+    "name_ko": "ASML 홀딩 ADR"
+  },
+  "ASX": {
+    "name_ko": "ASE 테크놀로지 홀딩 ADR",
+    "name_en": "ASE Technology Holding Co Ltd ADR"
+  },
+  "AU": {
+    "name_ko": "앵글로골드 아샨티",
+    "name_en": "Anglogold Ashanti PLC"
+  },
+  "AVGO": {
+    "name_en": "Broadcom Inc.",
+    "name_ko": "브로드컴"
+  },
+  "AXP": {
+    "name_en": "American Express Company",
+    "name_ko": "아메리칸 익스프레스"
+  },
+  "AZN": {
+    "name_en": "AstraZeneca PLC",
+    "name_ko": "아스트라제네카"
+  },
+  "AZO": {
+    "name_ko": "오토존",
+    "name_en": "Autozone Inc"
+  },
+  "B": {
+    "name_en": "Barrick Mining Corporation",
+    "name_ko": "바릭 마이닝"
+  },
+  "BA": {
+    "name_en": "Boeing Company (The)",
+    "name_ko": "보잉"
+  },
+  "BABA": {
+    "name_en": "Alibaba Group Holding Limited",
+    "name_ko": "알리바바 그룹 홀딩스 ADR"
+  },
+  "BAC": {
+    "name_en": "Bank of America Corporation",
+    "name_ko": "뱅크오브아메리카"
+  },
+  "BAC-PB": {
+    "name_en": "Bank of America Corporation Dep",
+    "name_ko": "Bank of America Corporation 부서"
+  },
+  "BAC-PE": {
+    "name_en": "Bank of America Corporation Dep",
+    "name_ko": "Bank of America Corporation 부서"
+  },
+  "BAC-PK": {
+    "name_en": "Bank of America Corporation Dep",
+    "name_ko": "Bank of America Corporation 부서"
+  },
+  "BAM": {
+    "name_en": "Brookfield Asset Management Inc",
+    "name_ko": "브룩필드 애셋 매니지먼트"
+  },
+  "BBVA": {
+    "name_en": "Banco Bilbao Vizcaya Argentaria",
+    "name_ko": "방코 빌바오 비스카야 아르헨타리아 ADR"
+  },
+  "BCS": {
+    "name_en": "Barclays PLC",
+    "name_ko": "바클레이즈 ADR"
+  },
+  "BDX": {
+    "name_ko": "벡톤 디킨슨 앤 코",
+    "name_en": "Becton Dickinson and Co"
+  },
+  "BHP": {
+    "name_en": "BHP Group Limited",
+    "name_ko": "BHP 그룹 ADR"
+  },
+  "BIDU": {
+    "name_ko": "바이두 ADR"
+  },
+  "BK": {
+    "name_en": "The Bank of New York Mellon Cor",
+    "name_ko": "뱅크 오브 뉴욕 멜론"
+  },
+  "BKNG": {
+    "name_en": "Booking Holdings Inc. Common St",
+    "name_ko": "부킹 홀딩스"
+  },
+  "BKR": {
+    "name_ko": "베이커 휴즈",
+    "name_en": "Baker Hughes Co"
+  },
+  "BLK": {
+    "name_en": "BlackRock, Inc.",
+    "name_ko": "블랙록"
+  },
+  "BML-PG": {
+    "name_en": "Bank of America Corporation Dep",
+    "name_ko": "Bank of America Corporation 부서"
+  },
+  "BML-PH": {
+    "name_en": "Bank of America Corporation Dep",
+    "name_ko": "Bank of America Corporation 부서"
+  },
+  "BML-PJ": {
+    "name_en": "Bank of America Corporation Dep",
+    "name_ko": "Bank of America Corporation 부서"
+  },
+  "BML-PL": {
+    "name_en": "Bank of America Corporation Dep",
+    "name_ko": "Bank of America Corporation 부서"
+  },
+  "BMO": {
+    "name_en": "Bank Of Montreal",
+    "name_ko": "뱅크 오브 몬트리올"
+  },
+  "BMY": {
+    "name_en": "Bristol-Myers Squibb Company",
+    "name_ko": "브리스톨-마이어스 스큅"
+  },
+  "BN": {
+    "name_en": "Brookfield Corporation",
+    "name_ko": "브룩필드"
+  },
+  "BNS": {
+    "name_en": "Bank Nova Scotia Halifax Pfd 3",
+    "name_ko": "뱅크 오브 노바 스코샤"
+  },
+  "BP": {
+    "name_en": "BP p.l.c.",
+    "name_ko": "BP ADR"
+  },
+  "BRK-A": {
+    "name_en": "Berkshire Hathaway Inc.",
+    "name_ko": "버크셔 해서웨이 Class A"
+  },
+  "BRK-B": {
+    "name_en": "Berkshire Hathaway Inc. New",
+    "name_ko": "버크셔 해서웨이 Class B"
+  },
+  "BSX": {
+    "name_en": "Boston Scientific Corporation",
+    "name_ko": "보스턴 사이언티픽"
+  },
+  "BTI": {
+    "name_en": "British American Tobacco  Indus",
+    "name_ko": "브리티쉬 아메리칸 토바코 ADR"
+  },
+  "BUD": {
+    "name_en": "Anheuser-Busch Inbev SA Sponsor",
+    "name_ko": "안호이저부시 인베브 ADR"
+  },
+  "BX": {
+    "name_en": "Blackstone Inc.",
+    "name_ko": "블랙스톤"
+  },
+  "C": {
+    "name_en": "Citigroup, Inc.",
+    "name_ko": "씨티그룹"
+  },
+  "CAH": {
+    "name_ko": "카디널 헬스"
+  },
+  "CARR": {
+    "name_ko": "캐리어 글로벌",
+    "name_en": "Carrier Global Corp"
+  },
+  "CAT": {
+    "name_en": "Caterpillar, Inc.",
+    "name_ko": "캐터필러"
+  },
+  "CB": {
+    "name_en": "Chubb Limited",
+    "name_ko": "처브"
+  },
+  "CCJ": {
+    "name_ko": "카메코",
+    "name_en": "Cameco Corp"
+  },
+  "CDNS": {
+    "name_en": "Cadence Design Systems, Inc.",
+    "name_ko": "케이던스 디자인 시스템즈"
+  },
+  "CEG": {
+    "name_en": "Constellation Energy Corporatio",
+    "name_ko": "콘스텔레이션 에너지"
+  },
+  "CI": {
+    "name_en": "The Cigna Group",
+    "name_ko": "시그나"
+  },
+  "CL": {
+    "name_en": "Colgate-Palmolive Company",
+    "name_ko": "콜게이트-팜올리브"
+  },
+  "CM": {
+    "name_ko": "캐내디언 임페리얼 뱅크 오브 커머스",
+    "name_en": "Canadian Imperial Bank of Commerce"
+  },
+  "CMCSA": {
+    "name_en": "Comcast Corporation",
+    "name_ko": "컴캐스트"
+  },
+  "CME": {
+    "name_en": "CME Group Inc.",
+    "name_ko": "CME 그룹"
+  },
+  "CMI": {
+    "name_en": "Cummins Inc.",
+    "name_ko": "커민스"
+  },
+  "CNI": {
+    "name_ko": "커네디언 내셔널 레일웨이",
+    "name_en": "Canadian National Railway Co"
+  },
+  "CNQ": {
+    "name_en": "Canadian Natural Resources Limi",
+    "name_ko": "캐나다 내추럴 리소시스"
+  },
+  "COF": {
+    "name_en": "Capital One Financial Corporati",
+    "name_ko": "캐피털 원 파이낸셜"
+  },
+  "COP": {
+    "name_en": "ConocoPhillips",
+    "name_ko": "코노코필립스"
+  },
+  "COR": {
+    "name_en": "Cencora, Inc.",
+    "name_ko": "센코라"
+  },
+  "COST": {
+    "name_en": "Costco Wholesale Corporation",
+    "name_ko": "코스트코 홀세일"
+  },
+  "CP": {
+    "name_en": "Canadian Pacific Kansas City Li",
+    "name_ko": "캐나디안 퍼시픽 캔자스 시티"
+  },
+  "CRH": {
+    "name_en": "CRH PLC",
+    "name_ko": "CRH"
+  },
+  "CRM": {
+    "name_en": "Salesforce, Inc.",
+    "name_ko": "세일즈포스"
+  },
+  "CRWD": {
+    "name_en": "CrowdStrike Holdings, Inc.",
+    "name_ko": "크라우드 스트라이크 홀딩스"
+  },
+  "CRWV": {
+    "name_ko": "코어위브"
+  },
+  "CSCO": {
+    "name_en": "Cisco Systems, Inc.",
+    "name_ko": "시스코 시스템즈"
+  },
+  "CSX": {
+    "name_en": "CSX Corporation",
+    "name_ko": "CSX"
+  },
+  "CTAS": {
+    "name_en": "Cintas Corporation",
+    "name_ko": "신타스"
+  },
+  "CTVA": {
+    "name_ko": "코르테바"
+  },
+  "CVNA": {
+    "name_en": "Carvana Co.",
+    "name_ko": "카바나"
+  },
+  "CVS": {
+    "name_en": "CVS Health Corporation",
+    "name_ko": "CVS 헬스"
+  },
+  "CVX": {
+    "name_en": "Chevron Corporation",
+    "name_ko": "셰브론"
+  },
+  "D": {
+    "name_ko": "도미니언 에너지",
+    "name_en": "Dominion Energy Inc"
+  },
+  "DASH": {
+    "name_ko": "도어대시",
+    "name_en": "DoorDash Inc"
+  },
+  "DB": {
+    "name_en": "Deutsche Bank AG",
+    "name_ko": "도이치은행"
+  },
+  "DE": {
+    "name_en": "Deere & Company",
+    "name_ko": "디어"
+  },
+  "DELL": {
+    "name_en": "Dell Technologies Inc.",
+    "name_ko": "델테크놀로지"
+  },
+  "DEO": {
+    "name_ko": "디아지오 ADR",
+    "name_en": "Diageo PLC ADR"
+  },
+  "DHI": {
+    "name_ko": "D.R. 호턴"
+  },
+  "DHR": {
+    "name_en": "Danaher Corporation",
+    "name_ko": "다나허"
+  },
+  "DIS": {
+    "name_en": "Walt Disney Company (The)",
+    "name_ko": "월트 디즈니"
+  },
+  "DLR": {
+    "name_ko": "디지털 리얼티 트러스트",
+    "name_en": "Digital Realty Trust Inc"
+  },
+  "DUK": {
+    "name_en": "Duke Energy Corporation (Holdin",
+    "name_ko": "듀크 에너지"
+  },
+  "E": {
+    "name_ko": "에니 ADR",
+    "name_en": "Eni SpA ADR"
+  },
+  "EA": {
+    "name_ko": "일렉트로닉 아츠"
+  },
+  "ECL": {
+    "name_en": "Ecolab Inc.",
+    "name_ko": "이콜랩"
+  },
+  "ELV": {
+    "name_en": "Elevance Health, Inc.",
+    "name_ko": "엘레반스 헬스"
+  },
+  "EMR": {
+    "name_en": "Emerson Electric Company",
+    "name_ko": "에머슨 일렉트릭"
+  },
+  "ENB": {
+    "name_en": "Enbridge Inc",
+    "name_ko": "엔브리지"
+  },
+  "EOG": {
+    "name_ko": "EOG 리소시스",
+    "name_en": "EOG Resources Inc"
+  },
+  "EPD": {
+    "name_en": "Enterprise Products Partners L.",
+    "name_ko": "Enterprise Products Partners Units"
+  },
+  "EQIX": {
+    "name_en": "Equinix, Inc.",
+    "name_ko": "이퀴닉스"
+  },
+  "EQNR": {
+    "name_en": "Equinor ASA",
+    "name_ko": "에퀴노르 ADR"
+  },
+  "ET": {
+    "name_ko": "Energy Transfer Units",
+    "name_en": "Energy Transfer Units"
+  },
+  "ETN": {
+    "name_en": "Eaton Corporation, PLC",
+    "name_ko": "이튼"
+  },
+  "EXC": {
+    "name_ko": "엑셀론"
+  },
+  "F": {
+    "name_ko": "포드 모터",
+    "name_en": "Ford Motor Co"
+  },
+  "FANG": {
+    "name_ko": "다이아몬드백 에너지"
+  },
+  "FAST": {
+    "name_ko": "패스널",
+    "name_en": "Fastenal Co"
+  },
+  "FCX": {
+    "name_en": "Freeport-McMoRan, Inc.",
+    "name_ko": "프리포트 맥모란"
+  },
+  "FDX": {
+    "name_en": "FedEx Corporation",
+    "name_ko": "페덱스"
+  },
+  "FER": {
+    "name_ko": "페로비알",
+    "name_en": "Ferrovial SE"
+  },
+  "FERG": {
+    "name_ko": "퍼거슨 엔터프라이즈",
+    "name_en": "Ferguson Enterprises Inc"
+  },
+  "FITB": {
+    "name_ko": "피프스 서드 뱅코프"
+  },
+  "FTNT": {
+    "name_ko": "포티넷",
+    "name_en": "Fortinet Inc"
+  },
+  "GD": {
+    "name_en": "General Dynamics Corporation",
+    "name_ko": "제너럴 다이내믹스"
+  },
+  "GE": {
+    "name_en": "GE Aerospace",
+    "name_ko": "GE 에어로스페이스"
+  },
+  "GEV": {
+    "name_en": "GE Vernova Inc.",
+    "name_ko": "GE 버노바"
+  },
+  "GILD": {
+    "name_en": "Gilead Sciences, Inc.",
+    "name_ko": "길리어드 사이언스"
+  },
+  "GLW": {
+    "name_en": "Corning Incorporated",
+    "name_ko": "코닝"
+  },
+  "GM": {
+    "name_en": "General Motors Company",
+    "name_ko": "제너럴 모터스"
+  },
+  "GOOG": {
+    "name_en": "Alphabet Inc.",
+    "name_ko": "알파벳 Class C"
+  },
+  "GOOGL": {
+    "name_en": "Alphabet Inc.",
+    "name_ko": "알파벳 Class A"
+  },
+  "GS": {
+    "name_en": "Goldman Sachs Group, Inc. (The)",
+    "name_ko": "골드만삭스"
+  },
+  "GS-PA": {
+    "name_en": "Goldman Sachs Group, Inc. (The)",
+    "name_ko": "골드만삭스그룹(The)"
+  },
+  "GS-PD": {
+    "name_en": "Goldman Sachs Group, Inc. (The)",
+    "name_ko": "골드만삭스그룹(The)"
+  },
+  "GSK": {
+    "name_en": "GSK plc",
+    "name_ko": "GSK"
+  },
+  "GWW": {
+    "name_ko": "W W 그레인저",
+    "name_en": "WW Grainger Inc"
+  },
+  "HCA": {
+    "name_en": "HCA Healthcare, Inc.",
+    "name_ko": "HCA 헬스케어"
+  },
+  "HD": {
+    "name_en": "Home Depot, Inc. (The)",
+    "name_ko": "홈디포"
+  },
+  "HDB": {
+    "name_en": "HDFC Bank Limited",
+    "name_ko": "HDFC 뱅크 ADR"
+  },
+  "HLN": {
+    "name_ko": "헤일리온 ADR"
+  },
+  "HLT": {
+    "name_en": "Hilton Worldwide Holdings Inc.",
+    "name_ko": "힐튼 월드와이드 홀딩스"
+  },
+  "HON": {
+    "name_en": "Honeywell International Inc.",
+    "name_ko": "허니웰 인터내셔널"
+  },
+  "HOOD": {
+    "name_ko": "로빈후드",
+    "name_en": "Robinhood Markets Inc"
+  },
+  "HSBC": {
+    "name_en": "HSBC Holdings, plc.",
+    "name_ko": "HSBC 홀딩스 ADR"
+  },
+  "HWM": {
+    "name_en": "Howmet Aerospace Inc.",
+    "name_ko": "하우멧 에어로스페이스"
+  },
+  "IBKR": {
+    "name_en": "Interactive Brokers Group, Inc.",
+    "name_ko": "인터랙티브 브로커스 그룹"
+  },
+  "IBM": {
+    "name_en": "International Business Machines",
+    "name_ko": "IBM(인터내셔널 비지니스 머신)"
+  },
+  "IBN": {
+    "name_en": "ICICI Bank Limited",
+    "name_ko": "ICICI 뱅크 ADR"
+  },
+  "ICE": {
+    "name_en": "Intercontinental Exchange Inc.",
+    "name_ko": "인터컨티넨털 익스체인지"
+  },
+  "IDXX": {
+    "name_ko": "아이덱스 래보라토리스"
+  },
+  "IMO": {
+    "name_ko": "임페리얼 오일",
+    "name_en": "Imperial Oil Ltd"
+  },
+  "INFY": {
+    "name_ko": "인포시스 ADR",
+    "name_en": "Infosys Ltd ADR"
+  },
+  "ING": {
+    "name_en": "ING Group, N.V.",
+    "name_ko": "ING 그룹 ADR"
+  },
+  "INTC": {
+    "name_en": "Intel Corporation",
+    "name_ko": "인텔"
+  },
+  "INTU": {
+    "name_en": "Intuit Inc.",
+    "name_ko": "인튜이트"
+  },
+  "ISRG": {
+    "name_en": "Intuitive Surgical, Inc.",
+    "name_ko": "인튜이티브 서지컬"
+  },
+  "ITUB": {
+    "name_en": "Itau Unibanco Banco Holding SA",
+    "name_ko": "이타우 우니방쿠 홀딩 ADR"
+  },
+  "ITW": {
+    "name_en": "Illinois Tool Works Inc.",
+    "name_ko": "일리노이 툴 웍스"
+  },
+  "JCI": {
+    "name_en": "Johnson Controls International",
+    "name_ko": "존슨 컨트롤스 인터내셔널"
+  },
+  "JNJ": {
+    "name_en": "Johnson & Johnson",
+    "name_ko": "존슨앤드존슨"
+  },
+  "JPM": {
+    "name_en": "JP Morgan Chase & Co.",
+    "name_ko": "제이피모간체이스"
+  },
+  "JPM-PC": {
+    "name_en": "J P Morgan Chase & Co Depositar",
+    "name_ko": "J P Morgan Chase & Co Depositar"
+  },
+  "JPM-PD": {
+    "name_en": "J P Morgan Chase & Co Depositar",
+    "name_ko": "J P Morgan Chase & Co Depositar"
+  },
+  "KKR": {
+    "name_en": "KKR & Co. Inc.",
+    "name_ko": "KKR & Co"
+  },
+  "KLAC": {
+    "name_en": "KLA Corporation",
+    "name_ko": "KLA"
+  },
+  "KMI": {
+    "name_en": "Kinder Morgan, Inc.",
+    "name_ko": "킨더 모건"
+  },
+  "KO": {
+    "name_en": "Coca-Cola Company (The)",
+    "name_ko": "코카콜라"
+  },
+  "LHX": {
+    "name_ko": "L3 해리스 테크놀러지",
+    "name_en": "L3Harris Technologies Inc"
+  },
+  "LIN": {
+    "name_en": "Linde plc",
+    "name_ko": "린드"
+  },
+  "LLY": {
+    "name_en": "Eli Lilly and Company",
+    "name_ko": "일라이 릴리"
+  },
+  "LMT": {
+    "name_en": "Lockheed Martin Corporation",
+    "name_ko": "록히드 마틴"
+  },
+  "LNG": {
+    "name_ko": "셰니어 에너지"
+  },
+  "LOW": {
+    "name_en": "Lowe's Companies, Inc.",
+    "name_ko": "로우스 컴퍼니"
+  },
+  "LRCX": {
+    "name_en": "Lam Research Corporation",
+    "name_ko": "램 리서치"
+  },
+  "LYG": {
+    "name_en": "Lloyds Banking Group Plc",
+    "name_ko": "로이즈 뱅킹 그룹 ADR"
+  },
+  "MA": {
+    "name_en": "Mastercard Incorporated",
+    "name_ko": "마스터카드"
+  },
+  "MAR": {
+    "name_en": "Marriott International",
+    "name_ko": "메리어트 인터내셔널"
+  },
+  "MCD": {
+    "name_en": "McDonald's Corporation",
+    "name_ko": "맥도날드"
+  },
+  "MCK": {
+    "name_en": "McKesson Corporation",
+    "name_ko": "매케슨"
+  },
+  "MCO": {
+    "name_en": "Moody's Corporation",
+    "name_ko": "무디스"
+  },
+  "MDLN": {
+    "name_ko": "메드라인",
+    "name_en": "Medline Inc"
+  },
+  "MDLZ": {
+    "name_en": "Mondelez International, Inc.",
+    "name_ko": "몬덜리즈 인터내셔널"
+  },
+  "MDT": {
+    "name_en": "Medtronic plc.",
+    "name_ko": "메드트로닉"
+  },
+  "MELI": {
+    "name_en": "MercadoLibre, Inc.",
+    "name_ko": "메르카도리브레"
+  },
+  "MET": {
+    "name_ko": "메트라이프",
+    "name_en": "MetLife Inc"
+  },
+  "META": {
+    "name_en": "Meta Platforms, Inc.",
+    "name_ko": "메타"
+  },
+  "MFC": {
+    "name_ko": "매뉴라이프 파이낸셜",
+    "name_en": "Manulife Financial Corp"
+  },
+  "MFG": {
+    "name_en": "Mizuho Financial Group, Inc. Sp",
+    "name_ko": "미즈호 파이낸셜그룹 ADR"
+  },
+  "MMM": {
+    "name_en": "3M Company",
+    "name_ko": "쓰리엠 (3M)"
+  },
+  "MNST": {
+    "name_en": "Monster Beverage Corporation",
+    "name_ko": "몬스터 베버리지"
+  },
+  "MO": {
+    "name_en": "Altria Group, Inc.",
+    "name_ko": "알트리아그룹"
+  },
+  "MPC": {
+    "name_ko": "매러선 페트롤리엄",
+    "name_en": "Marathon Petroleum Corp"
+  },
+  "MPLX": {
+    "name_ko": "MPLX Common Units",
+    "name_en": "MPLX Common Units"
+  },
+  "MPWR": {
+    "name_ko": "모놀리식 파워 시스템즈",
+    "name_en": "Monolithic Power Systems Inc"
+  },
+  "MRK": {
+    "name_en": "Merck & Company, Inc.",
+    "name_ko": "머크 앤 코"
+  },
+  "MRSH": {
+    "name_en": "Marsh",
+    "name_ko": "마쉬 앤 맥레넌 컴퍼니스"
+  },
+  "MRVL": {
+    "name_ko": "마벨 테크놀로지 그룹",
+    "name_en": "Marvell Technology Inc"
+  },
+  "MS": {
+    "name_en": "Morgan Stanley",
+    "name_ko": "모간스탠리"
+  },
+  "MS-PA": {
+    "name_en": "Morgan Stanley Dep Shs repstg 1",
+    "name_ko": "Morgan Stanley Dep Shs 담당자 1"
+  },
+  "MS-PE": {
+    "name_en": "Morgan Stanley DEPOSITARY SHARE",
+    "name_ko": "모건스탠리 예탁주"
+  },
+  "MS-PF": {
+    "name_en": "Morgan Stanley Dep Shs Rpstg 1/",
+    "name_ko": "Morgan Stanley Dep Shs Rpstg 1/"
+  },
+  "MS-PI": {
+    "name_en": "Morgan Stanley Depository Share",
+    "name_ko": "Morgan Stanley 예탁 주식"
+  },
+  "MS-PK": {
+    "name_en": "Morgan Stanley Depositary Share",
+    "name_ko": "모건스탠리 예탁주"
+  },
+  "MSFT": {
+    "name_en": "Microsoft Corporation",
+    "name_ko": "마이크로소프트"
+  },
+  "MSI": {
+    "name_en": "Motorola Solutions, Inc.",
+    "name_ko": "모토로라 솔루션스"
+  },
+  "MT": {
+    "name_ko": "아르셀로미탈 ADR"
+  },
+  "MU": {
+    "name_en": "Micron Technology, Inc.",
+    "name_ko": "마이크론 테크놀로지"
+  },
+  "MUFG": {
+    "name_en": "Mitsubishi UFJ Financial Group,",
+    "name_ko": "미쓰비시 UFJ 파이낸셜 그룹 ADR"
+  },
+  "NEE": {
+    "name_en": "NextEra Energy, Inc.",
+    "name_ko": "넥스트에라 에너지"
+  },
+  "NEM": {
+    "name_en": "Newmont Corporation",
+    "name_ko": "뉴몬트"
+  },
+  "NET": {
+    "name_ko": "클라우드플레어",
+    "name_en": "Cloudflare Inc"
+  },
+  "NFLX": {
+    "name_en": "Netflix, Inc.",
+    "name_ko": "넷플릭스"
+  },
+  "NGG": {
+    "name_en": "National Grid Transco, PLC Nati",
+    "name_ko": "내셔널 그리드 ADR"
+  },
+  "NKE": {
+    "name_en": "Nike, Inc.",
+    "name_ko": "나이키"
+  },
+  "NOC": {
+    "name_en": "Northrop Grumman Corporation",
+    "name_ko": "노스롭 그루만"
+  },
+  "NOW": {
+    "name_en": "ServiceNow, Inc.",
+    "name_ko": "서비스나우"
+  },
+  "NSC": {
+    "name_en": "Norfolk Southern Corporation",
+    "name_ko": "노퍽서던"
+  },
+  "NTES": {
+    "name_en": "NetEase, Inc.",
+    "name_ko": "넷이즈 ADR"
+  },
+  "NU": {
+    "name_en": "Nu Holdings Ltd.",
+    "name_ko": "누 홀딩스"
+  },
+  "NVDA": {
+    "name_en": "NVIDIA Corporation",
+    "name_ko": "엔비디아"
+  },
+  "NVO": {
+    "name_en": "Novo Nordisk A/S",
+    "name_ko": "노보 노디스크 ADR"
+  },
+  "NVS": {
+    "name_en": "Novartis AG",
+    "name_ko": "노바티스 ADR"
+  },
+  "NWG": {
+    "name_ko": "내트웨스트 그룹 ADR",
+    "name_en": "NatWest Group PLC ADR"
+  },
+  "NXPI": {
+    "name_ko": "NXP 세미콘덕터",
+    "name_en": "NXP Semiconductors NV"
+  },
+  "O": {
+    "name_ko": "리얼티 인컴",
+    "name_en": "Realty Income Corp"
+  },
+  "OKE": {
+    "name_ko": "원오케이",
+    "name_en": "ONEOK Inc"
+  },
+  "ORCL": {
+    "name_en": "Oracle Corporation",
+    "name_ko": "오라클"
+  },
+  "ORLY": {
+    "name_en": "O'Reilly Automotive, Inc.",
+    "name_ko": "오레일리 오토모티브"
+  },
+  "PANW": {
+    "name_en": "Palo Alto Networks, Inc.",
+    "name_ko": "팔로 알토 네트웍스"
+  },
+  "PBR": {
+    "name_en": "Petroleo Brasileiro S.A. Petrob",
+    "name_ko": "페트로브라스 ADR"
+  },
+  "PBR-A": {
+    "name_en": "Petroleo Brasileiro S.A. Petrob",
+    "name_ko": "Petroleo Brasileiro S.A. Petrob"
+  },
+  "PCAR": {
+    "name_ko": "파카",
+    "name_en": "Paccar Inc"
+  },
+  "PDD": {
+    "name_en": "PDD Holdings Inc.",
+    "name_ko": "핀둬둬 ADR"
+  },
+  "PEP": {
+    "name_en": "Pepsico, Inc.",
+    "name_ko": "펩시코"
+  },
+  "PFE": {
+    "name_en": "Pfizer, Inc.",
+    "name_ko": "화이자"
+  },
+  "PG": {
+    "name_en": "Procter & Gamble Company (The)",
+    "name_ko": "P&G(프록터 & 갬블)"
+  },
+  "PGR": {
+    "name_en": "Progressive Corporation (The)",
+    "name_ko": "프로그레시브"
+  },
+  "PH": {
+    "name_en": "Parker-Hannifin Corporation",
+    "name_ko": "파커-하니핀"
+  },
+  "PLD": {
+    "name_en": "Prologis, Inc.",
+    "name_ko": "프로로지스"
+  },
+  "PLTR": {
+    "name_en": "Palantir Technologies Inc.",
+    "name_ko": "팔란티어 테크놀로지스"
+  },
+  "PM": {
+    "name_en": "Philip Morris International Inc",
+    "name_ko": "필립 모리스 인터내셔널"
+  },
+  "PNC": {
+    "name_en": "PNC Financial Services Group, I",
+    "name_ko": "PNC 파이낸셜 서비스"
+  },
+  "PSA": {
+    "name_ko": "퍼블릭 스토리지",
+    "name_en": "Public Storage"
+  },
+  "PSX": {
+    "name_ko": "필립스 66",
+    "name_en": "Phillips 66"
+  },
+  "PWR": {
+    "name_en": "Quanta Services, Inc.",
+    "name_ko": "콴타 서비스"
+  },
+  "QCOM": {
+    "name_en": "QUALCOMM Incorporated",
+    "name_ko": "퀄컴"
+  },
+  "RACE": {
+    "name_ko": "페라리",
+    "name_en": "Ferrari NV"
+  },
+  "RCL": {
+    "name_en": "Royal Caribbean Cruises Ltd.",
+    "name_ko": "로얄 캐리비안 크루즈"
+  },
+  "REGN": {
+    "name_en": "Regeneron Pharmaceuticals, Inc.",
+    "name_ko": "리제네론 파마슈티컬스"
+  },
+  "RELX": {
+    "name_ko": "렐엑스 ADR",
+    "name_en": "Relx PLC ADR"
+  },
+  "RIO": {
+    "name_en": "Rio Tinto Plc",
+    "name_ko": "리오 틴토 ADR"
+  },
+  "RKT": {
+    "name_ko": "로켓 컴퍼니스"
+  },
+  "ROST": {
+    "name_ko": "로스 스토어스",
+    "name_en": "Ross Stores Inc"
+  },
+  "RSG": {
+    "name_en": "Republic Services, Inc.",
+    "name_ko": "리퍼블릭 서비스"
+  },
+  "RTX": {
+    "name_en": "RTX Corporation",
+    "name_ko": "RTX"
+  },
+  "RY": {
+    "name_en": "Royal Bank Of Canada",
+    "name_ko": "로열 뱅크 오브 캐나다"
+  },
+  "SAN": {
+    "name_en": "Banco Santander, S.A. Sponsored",
+    "name_ko": "방코 산탄데르 ADR"
+  },
+  "SAP": {
+    "name_en": "SAP  SE",
+    "name_ko": "SAP ADR"
+  },
+  "SBUX": {
+    "name_en": "Starbucks Corporation",
+    "name_ko": "스타벅스"
+  },
+  "SCCO": {
+    "name_en": "Southern Copper Corporation",
+    "name_ko": "서던 코퍼"
+  },
+  "SCHW": {
+    "name_en": "Charles Schwab Corporation (The",
+    "name_ko": "찰스 슈왑"
+  },
+  "SE": {
+    "name_ko": "씨 ADR",
+    "name_en": "Sea Ltd ADR"
+  },
+  "SHEL": {
+    "name_en": "Shell PLC",
+    "name_ko": "쉘 ADR"
+  },
+  "SHOP": {
+    "name_en": "Shopify Inc.",
+    "name_ko": "쇼피파이"
+  },
+  "SHW": {
+    "name_en": "Sherwin-Williams Company (The)",
+    "name_ko": "셔윈-윌리엄즈"
+  },
+  "SLB": {
+    "name_en": "SLB Limited",
+    "name_ko": "Slb NV"
+  },
+  "SMFG": {
+    "name_en": "Sumitomo Mitsui Financial Group",
+    "name_ko": "스미토모 미쓰이 파이낸셜그룹 ADR"
+  },
+  "SNDK": {
+    "name_en": "Sandisk Corporation",
+    "name_ko": "샌디스크"
+  },
+  "SNOW": {
+    "name_ko": "스노우플레이크",
+    "name_en": "Snowflake Inc"
+  },
+  "SNPS": {
+    "name_en": "Synopsys, Inc.",
+    "name_ko": "시놉시스"
+  },
+  "SNY": {
+    "name_en": "Sanofi",
+    "name_ko": "사노피 ADR"
+  },
+  "SO": {
+    "name_en": "Southern Company (The)",
+    "name_ko": "서던"
+  },
+  "SONY": {
+    "name_en": "Sony Group Corporation",
+    "name_ko": "소니 그룹 ADR"
+  },
+  "SPG": {
+    "name_en": "Simon Property Group, Inc.",
+    "name_ko": "사이먼 프로퍼티 그룹"
+  },
+  "SPGI": {
+    "name_en": "S&P Global Inc.",
+    "name_ko": "S&P 글로벌"
+  },
+  "SPOT": {
+    "name_en": "Spotify Technology S.A.",
+    "name_ko": "스포티파이 테크놀러지"
+  },
+  "SRE": {
+    "name_ko": "셈프라 에너지",
+    "name_en": "Sempra"
+  },
+  "STX": {
+    "name_en": "Seagate Technology Holdings PLC",
+    "name_ko": "씨게이트"
+  },
+  "SU": {
+    "name_ko": "선코어 에너지",
+    "name_en": "Suncor Energy Inc (Canada)"
+  },
+  "SYK": {
+    "name_en": "Stryker Corporation",
+    "name_ko": "스트라이커"
+  },
+  "T": {
+    "name_en": "AT&T Inc.",
+    "name_ko": "AT&T"
+  },
+  "TAK": {
+    "name_ko": "다케다 파마슈티컬 ADR",
+    "name_en": "Takeda Pharmaceutical Co Ltd ADR"
+  },
+  "TD": {
+    "name_en": "Toronto Dominion Bank (The)",
+    "name_ko": "토론토 도미니언 은행"
+  },
+  "TDG": {
+    "name_en": "Transdigm Group Incorporated",
+    "name_ko": "트랜스다임 그룹"
+  },
+  "TEL": {
+    "name_en": "TE Connectivity plc",
+    "name_ko": "TE 커넥티비티"
+  },
+  "TER": {
+    "name_ko": "테라다인"
+  },
+  "TFC": {
+    "name_ko": "트루이스트 파이낸셜",
+    "name_en": "Truist Financial Corp"
+  },
+  "TGT": {
+    "name_ko": "타겟",
+    "name_en": "Target Corp"
+  },
+  "TJX": {
+    "name_en": "TJX Companies, Inc. (The)",
+    "name_ko": "TJX 컴퍼니스"
+  },
+  "TM": {
+    "name_en": "Toyota Motor Corporation",
+    "name_ko": "토요타자동차 ADR"
+  },
+  "TMO": {
+    "name_en": "Thermo Fisher Scientific Inc",
+    "name_ko": "써모 피셔 사이언티픽"
+  },
+  "TMUS": {
+    "name_en": "T-Mobile US, Inc.",
+    "name_ko": "T-모바일 US"
+  },
+  "TRGP": {
+    "name_ko": "타르가 리소스"
+  },
+  "TRP": {
+    "name_ko": "TC 에너지",
+    "name_en": "TC Energy Corp"
+  },
+  "TRV": {
+    "name_ko": "트래블러스 컴퍼니스",
+    "name_en": "Travelers Companies Inc"
+  },
+  "TSLA": {
+    "name_en": "Tesla, Inc.",
+    "name_ko": "테슬라"
+  },
+  "TSM": {
+    "name_en": "Taiwan Semiconductor Manufactur",
+    "name_ko": "TSMC(타이완반도체제조) ADR"
+  },
+  "TT": {
+    "name_en": "Trane Technologies plc",
+    "name_ko": "트레인 테크놀로지"
+  },
+  "TTE": {
+    "name_en": "TotalEnergies SE",
+    "name_ko": "토탈에너지스"
+  },
+  "TXN": {
+    "name_en": "Texas Instruments Incorporated",
+    "name_ko": "텍사스 인스트루먼트"
+  },
+  "UBER": {
+    "name_en": "Uber Technologies, Inc.",
+    "name_ko": "우버"
+  },
+  "UBS": {
+    "name_en": "UBS Group AG Registered",
+    "name_ko": "UBS 그룹 AG"
+  },
+  "UL": {
+    "name_en": "Unilever PLC",
+    "name_ko": "유니레버 ADR"
+  },
+  "UNH": {
+    "name_en": "UnitedHealth Group Incorporated",
+    "name_ko": "유나이티드헬스 그룹"
+  },
+  "UNP": {
+    "name_en": "Union Pacific Corporation",
+    "name_ko": "유니온 퍼시픽"
+  },
+  "UPS": {
+    "name_en": "United Parcel Service, Inc.",
+    "name_ko": "UPS(유나이티드 파셀 서비스)"
+  },
+  "URI": {
+    "name_ko": "유나이티드 렌탈스",
+    "name_en": "United Rentals Inc"
+  },
+  "USB": {
+    "name_en": "U.S. Bancorp",
+    "name_ko": "US 뱅코프"
+  },
+  "USB-PH": {
+    "name_en": "U.S. Bancorp Depositary Shares",
+    "name_ko": "미국 Bancorp 예탁주"
+  },
+  "USB-PP": {
+    "name_en": "U.S. Bancorp Depositary Shares",
+    "name_ko": "미국 Bancorp 예탁주"
+  },
+  "V": {
+    "name_en": "Visa Inc.",
+    "name_ko": "비자"
+  },
+  "VALE": {
+    "name_en": "VALE S.A.",
+    "name_ko": "발레 ADR"
+  },
+  "VLO": {
+    "name_ko": "발레로 에너지",
+    "name_en": "Valero Energy Corp"
+  },
+  "VRT": {
+    "name_en": "Vertiv Holdings, LLC",
+    "name_ko": "버티브 홀딩스"
+  },
+  "VRTX": {
+    "name_en": "Vertex Pharmaceuticals Incorpor",
+    "name_ko": "버텍스 파마슈티컬"
+  },
+  "VST": {
+    "name_ko": "비스트라 에너지",
+    "name_en": "Vistra Corp"
+  },
+  "VZ": {
+    "name_en": "Verizon Communications Inc.",
+    "name_ko": "버라이존"
+  },
+  "WBD": {
+    "name_en": "Warner Bros. Discovery, Inc. -",
+    "name_ko": "워너 브로스 디스커버리"
+  },
+  "WDC": {
+    "name_en": "Western Digital Corporation",
+    "name_ko": "웨스턴 디지털"
+  },
+  "WELL": {
+    "name_en": "Welltower Inc.",
+    "name_ko": "웰타워"
+  },
+  "WFC": {
+    "name_en": "Wells Fargo & Company",
+    "name_ko": "웰스파고"
+  },
+  "WFC-PC": {
+    "name_en": "Wells Fargo & Company Depositar",
+    "name_ko": "Wells Fargo & Company 예금자"
+  },
+  "WFC-PL": {
+    "name_en": "Wells Fargo & Company 7.50% Non",
+    "name_ko": "Wells Fargo & Company 7.50% 비"
+  },
+  "WFC-PY": {
+    "name_en": "Wells Fargo & Company Depositar",
+    "name_ko": "Wells Fargo & Company 예금자"
+  },
+  "WM": {
+    "name_en": "Waste Management, Inc.",
+    "name_ko": "웨이스트 매니지먼트"
+  },
+  "WMB": {
+    "name_en": "Williams Companies, Inc. (The)",
+    "name_ko": "윌리엄스 컴퍼니즈"
+  },
+  "WMT": {
+    "name_en": "Walmart Inc.",
+    "name_ko": "월마트"
+  },
+  "WPM": {
+    "name_ko": "휘턴 프레셔스 메탈스",
+    "name_en": "Wheaton Precious Metals Corp"
+  },
+  "XEL": {
+    "name_ko": "엑셀 에너지"
+  },
+  "XOM": {
+    "name_en": "Exxon Mobil Corporation",
+    "name_ko": "엑슨 모빌"
+  },
+  "ZTS": {
+    "name_ko": "조에티스",
+    "name_en": "Zoetis Inc"
+  }
+}
