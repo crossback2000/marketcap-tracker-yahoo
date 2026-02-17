@@ -10,12 +10,12 @@ x-app-base: &app-base
   environment:
     APP_ENV: production
     ENABLE_DOCS: "0"
-    TRUST_PROXY_HEADERS: "0"
+    TRUST_PROXY_HEADERS: "1"
 
 services:
   app:
     <<: *app-base
-    command: ["uvicorn", "app:app", "--host", "0.0.0.0", "--port", "8010", "--no-proxy-headers"]
+    command: ["uvicorn", "app:app", "--host", "0.0.0.0", "--port", "8010", "--forwarded-allow-ips", "172.18.0.1,127.0.0.1"]
     ports:
       - "127.0.0.1:8010:8010"
     restart: unless-stopped
