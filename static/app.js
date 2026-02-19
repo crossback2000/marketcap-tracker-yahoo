@@ -1,6 +1,9 @@
 const DISPLAY_LIMIT = 260;
 const LOOKBACK_DAYS = 5475;
 const BIG_MOVER_THRESHOLD = 5;
+const FLOW_MAX_POINTS_MIN = 480;
+const FLOW_MAX_POINTS_MAX = 1400;
+const FLOW_POINTS_PER_PX = 1.15;
 
 const tableBody = document.getElementById('table-body');
 const asOfLabel = document.getElementById('as-of');
@@ -16,6 +19,7 @@ const symbolInput = document.getElementById('symbol-input');
 const focusSymbolButton = document.getElementById('focus-symbol');
 const eventDaysSelect = document.getElementById('event-days');
 const eventMaxItemsSelect = document.getElementById('event-max-items');
+const flowChartElement = document.getElementById('flow-chart');
 
 let flowChart = null;
 let detailChart = null;
@@ -26,6 +30,11 @@ let seriesBySymbol = new Map();
 let historyBySymbol = new Map();
 let historyAbortController = null;
 let timelineAbortController = null;
+let latestSnapshotRows = [];
+let latestSnapshotBySymbol = new Map();
+let latestTotalMarketCap = null;
+let flowBaseSignature = '';
+let symbolHueBySymbol = new Map();
 
 const fmtCap = (num) => {
   if (num === null || num === undefined || Number.isNaN(num)) return '—';
@@ -46,11 +55,19 @@ const fmtSignedCap = (num) => {
   return `${sign}${fmtCap(Math.abs(num))}`;
 };
 
-const symbolColor = (symbol, alpha = 1) => {
+function symbolHue(symbol) {
+  if (symbolHueBySymbol.has(symbol)) return symbolHueBySymbol.get(symbol);
   let hash = 0;
-  for (let i = 0; i < symbol.length; i += 1) hash = (hash * 31 + symbol.charCodeAt(i)) % 360;
-  return `hsla(${hash}, 80%, 60%, ${alpha})`;
-};
+  for (let i = 0; i < symbol.length; i += 1) {
+    hash = (hash * 31 + symbol.charCodeAt(i)) % 360;
+  }
+  symbolHueBySymbol.set(symbol, hash);
+  return hash;
+}
+
+function symbolColor(symbol, alpha = 1) {
+  return `hsla(${symbolHue(symbol)}, 80%, 60%, ${alpha})`;
+}
 
 function clearChildren(node) {
   while (node.firstChild) node.removeChild(node.firstChild);
@@ -94,18 +111,59 @@ function selectedChartRankCap() {
   return Math.min(parsed, timeline.limit);
 }
 
+function suggestedFlowMaxPoints() {
+  const width = Math.max(
+    window.innerWidth || 0,
+    (flowChartElement && flowChartElement.clientWidth) || 0,
+    360,
+  );
+  const estimated = Math.round(width * FLOW_POINTS_PER_PX);
+  return Math.max(FLOW_MAX_POINTS_MIN, Math.min(FLOW_MAX_POINTS_MAX, estimated));
+}
+
 function updateLatestTag() {
   if (!timeline || !timeline.dates || !timeline.dates.length) return;
-  latestTag.textContent = `${timeline.dates.length}개 거래일 · 저장 상위 ${timeline.limit}위 · 차트 표시 ${selectedChartRankCap()}위`;
+  const totalDates = Number(timeline.total_dates) > 0 ? timeline.total_dates : timeline.dates.length;
+  const renderedDates = timeline.dates.length;
+  const sampledLabel =
+    renderedDates < totalDates
+      ? `${renderedDates}개 샘플 (약 ${timeline.sampling_step || 1}일 간격)`
+      : `${renderedDates}개 거래일`;
+  latestTag.textContent = `${totalDates}개 거래일(${sampledLabel}) · 저장 상위 ${timeline.limit}위 · 차트 표시 ${selectedChartRankCap()}위`;
+}
+
+function setLatestSnapshot(data) {
+  const rows = Array.isArray(data && data.rows) ? data.rows : [];
+  latestSnapshotRows = rows
+    .map((row) => ({
+      symbol: row.symbol,
+      name: row.name || row.symbol,
+      rank: row.rank,
+      marketCap: row.market_cap,
+    }))
+    .sort((a, b) => a.rank - b.rank);
+  latestSnapshotBySymbol = new Map(latestSnapshotRows.map((row) => [row.symbol, row]));
+  latestTotalMarketCap = latestSnapshotRows.reduce(
+    (sum, row) => sum + (Number.isFinite(row.marketCap) ? row.marketCap : 0),
+    0,
+  );
 }
 
 function snapshotRowsAt(index) {
   if (!timeline) return [];
+
+  const lastIndex = timeline.dates.length - 1;
+  if (index === lastIndex && latestSnapshotRows.length) {
+    return latestSnapshotRows;
+  }
+
+  const includeCaps = Boolean(timeline.include_caps);
   const rows = [];
   timeline.series.forEach((series) => {
     const rank = series.ranks[index];
     if (rank === null || rank === undefined) return;
-    const cap = series.caps[index];
+
+    const cap = includeCaps && Array.isArray(series.caps) ? series.caps[index] : null;
     rows.push({
       symbol: series.symbol,
       name: series.name,
@@ -118,16 +176,37 @@ function snapshotRowsAt(index) {
 }
 
 function topTotalAt(index) {
-  return snapshotRowsAt(index).reduce((sum, row) => sum + (row.marketCap || 0), 0);
+  if (!timeline) return null;
+
+  const lastIndex = timeline.dates.length - 1;
+  if (index === lastIndex && Number.isFinite(latestTotalMarketCap)) {
+    return latestTotalMarketCap;
+  }
+
+  const rows = snapshotRowsAt(index);
+  let hasCap = false;
+  let sum = 0;
+  rows.forEach((row) => {
+    if (Number.isFinite(row.marketCap)) {
+      hasCap = true;
+      sum += row.marketCap;
+    }
+  });
+  return hasCap ? sum : null;
 }
 
 function renderSnapshot() {
   if (!timeline) return;
   const index = currentDateIndex;
-
   const date = timeline.dates[index];
   selectedDateLabel.textContent = date;
+
   const rows = snapshotRowsAt(index);
+  if (!rows.length) {
+    setTableMessage('표시할 순위 데이터가 없습니다');
+    topTotalLabel.textContent = '—';
+    return;
+  }
 
   clearChildren(tableBody);
   const fragment = document.createDocumentFragment();
@@ -167,12 +246,14 @@ function renderSnapshot() {
   const total = topTotalAt(index);
   if (index > 0) {
     const prevTotal = topTotalAt(index - 1);
-    const diff = total - prevTotal;
-    const pct = prevTotal ? (diff / prevTotal) * 100 : null;
-    topTotalLabel.textContent = `${fmtCap(total)} (${fmtSignedCap(diff)}, ${fmtPct(pct)})`;
-  } else {
-    topTotalLabel.textContent = fmtCap(total);
+    if (Number.isFinite(total) && Number.isFinite(prevTotal) && prevTotal > 0) {
+      const diff = total - prevTotal;
+      const pct = (diff / prevTotal) * 100;
+      topTotalLabel.textContent = `${fmtCap(total)} (${fmtSignedCap(diff)}, ${fmtPct(pct)})`;
+      return;
+    }
   }
+  topTotalLabel.textContent = fmtCap(total);
 }
 
 function buildFlowSeries() {
@@ -190,16 +271,19 @@ function buildFlowSeries() {
       return {
         type: 'line',
         name: item.symbol,
-        data: item.ranks.map((v) => (v === null || v === undefined ? '-' : v)),
+        data: item.plotRanks,
         connectNulls: false,
         showSymbol: false,
-        smooth: 0.15,
+        smooth: false,
         sampling: 'lttb',
-        progressive: 2000,
-        progressiveThreshold: 2000,
+        progressive: 4000,
+        progressiveThreshold: 3000,
+        large: true,
+        largeThreshold: 1200,
+        animation: false,
         lineStyle: {
-          color: symbolColor(item.symbol, focused ? 1 : 0.3),
-          width: focused ? 3 : 1,
+          color: symbolColor(item.symbol, focused ? 1 : 0.24),
+          width: focused ? 2.6 : 1,
         },
         emphasis: {
           focus: 'series',
@@ -208,8 +292,101 @@ function buildFlowSeries() {
     });
 }
 
+function flowChartSignature() {
+  if (!timeline || !timeline.dates || !timeline.dates.length) return 'empty';
+  const first = timeline.dates[0];
+  const last = timeline.dates[timeline.dates.length - 1];
+  return `${timeline.dates.length}:${first}:${last}`;
+}
+
+function formatFlowTooltip(param) {
+  if (!param) return '';
+
+  const rank = param.value;
+  if (rank === '-' || rank === null || rank === undefined) {
+    return `${param.seriesName}: 데이터 없음`;
+  }
+
+  const idx = Number.isInteger(param.dataIndex) ? param.dataIndex : -1;
+  const label = idx >= 0 && timeline && timeline.dates ? timeline.dates[idx] : '';
+  const seriesObj = seriesBySymbol.get(param.seriesName);
+
+  let cap = null;
+  if (seriesObj && Array.isArray(seriesObj.caps) && idx >= 0 && idx < seriesObj.caps.length) {
+    cap = seriesObj.caps[idx];
+  }
+  if ((cap === null || cap === undefined) && timeline && idx === timeline.dates.length - 1) {
+    const latestRow = latestSnapshotBySymbol.get(param.seriesName);
+    cap = latestRow ? latestRow.marketCap : null;
+  }
+
+  return `${label}\n${param.seriesName} #${rank} · ${fmtCap(cap)}`;
+}
+
 function renderFlowChart() {
   if (!timeline || !flowChart) return;
+
+  const signature = flowChartSignature();
+  if (flowBaseSignature !== signature) {
+    flowChart.setOption(
+      {
+        animation: false,
+        backgroundColor: 'transparent',
+        grid: { top: 24, left: 48, right: 16, bottom: 46 },
+        xAxis: {
+          type: 'category',
+          boundaryGap: false,
+          data: timeline.dates,
+          axisLine: { lineStyle: { color: 'rgba(255,255,255,0.18)' } },
+          axisLabel: { color: '#9fb6d6', hideOverlap: true },
+        },
+        yAxis: {
+          type: 'value',
+          inverse: true,
+          min: 1,
+          max: selectedChartRankCap(),
+          interval: 5,
+          axisLine: { lineStyle: { color: 'rgba(255,255,255,0.18)' } },
+          axisLabel: { color: '#dfe9ff' },
+          splitLine: { lineStyle: { color: 'rgba(255,255,255,0.08)' } },
+        },
+        dataZoom: [
+          {
+            type: 'inside',
+            xAxisIndex: 0,
+            filterMode: 'none',
+          },
+          {
+            type: 'slider',
+            xAxisIndex: 0,
+            filterMode: 'none',
+            height: 18,
+            bottom: 8,
+            borderColor: 'rgba(255,255,255,0.08)',
+            backgroundColor: 'rgba(255,255,255,0.06)',
+            fillerColor: 'rgba(124,245,255,0.16)',
+            handleStyle: { color: '#7cf5ff' },
+            textStyle: { color: '#9fb6d6' },
+          },
+        ],
+        tooltip: {
+          trigger: 'item',
+          renderMode: 'richText',
+          confine: true,
+          backgroundColor: 'rgba(8,16,28,0.92)',
+          borderColor: 'rgba(124,245,255,0.35)',
+          textStyle: { color: '#dfe9ff' },
+          formatter: formatFlowTooltip,
+        },
+        series: [],
+      },
+      {
+        notMerge: true,
+        lazyUpdate: true,
+      },
+    );
+    flowBaseSignature = signature;
+  }
 
   const series = buildFlowSeries();
   const rankCap = selectedChartRankCap();
@@ -221,75 +398,18 @@ function renderFlowChart() {
 
   flowChart.setOption(
     {
-      animation: false,
-      backgroundColor: 'transparent',
-      grid: { top: 24, left: 48, right: 16, bottom: 46 },
-      xAxis: {
-        type: 'category',
-        boundaryGap: false,
-        data: timeline.dates,
-        axisLine: { lineStyle: { color: 'rgba(255,255,255,0.18)' } },
-        axisLabel: { color: '#9fb6d6', hideOverlap: true },
-      },
       yAxis: {
-        type: 'value',
-        inverse: true,
-        min: 1,
         max: yMax,
-        interval: 5,
-        axisLine: { lineStyle: { color: 'rgba(255,255,255,0.18)' } },
-        axisLabel: { color: '#dfe9ff' },
-        splitLine: { lineStyle: { color: 'rgba(255,255,255,0.08)' } },
-      },
-      dataZoom: [
-        {
-          type: 'inside',
-          xAxisIndex: 0,
-          filterMode: 'none',
-        },
-        {
-          type: 'slider',
-          xAxisIndex: 0,
-          filterMode: 'none',
-          height: 18,
-          bottom: 8,
-          borderColor: 'rgba(255,255,255,0.08)',
-          backgroundColor: 'rgba(255,255,255,0.06)',
-          fillerColor: 'rgba(124,245,255,0.16)',
-          handleStyle: { color: '#7cf5ff' },
-          textStyle: { color: '#9fb6d6' },
-        },
-      ],
-      tooltip: {
-        trigger: 'axis',
-        axisPointer: { type: 'line' },
-        renderMode: 'richText',
-        backgroundColor: 'rgba(8,16,28,0.92)',
-        borderColor: 'rgba(124,245,255,0.35)',
-        textStyle: { color: '#dfe9ff' },
-        formatter: (params) => {
-          if (!params || !params.length) return '';
-          const activePoint = activeSymbol ? params.find((p) => p.seriesName === activeSymbol) : null;
-          const target = activePoint || params.find((p) => p.value !== '-') || params[0];
-          const rank = target.value;
-          if (rank === '-' || rank === null || rank === undefined) {
-            return `${target.seriesName}: 상위 ${rankCap}위 밖`;
-          }
-          const seriesObj = seriesBySymbol.get(target.seriesName);
-          const cap = seriesObj ? seriesObj.caps[target.dataIndex] : null;
-          return `${target.axisValue}\n${target.seriesName} #${rank} · ${fmtCap(cap)}`;
-        },
       },
       series,
     },
-    true,
+    {
+      notMerge: false,
+      lazyUpdate: true,
+      replaceMerge: ['series'],
+      silent: true,
+    },
   );
-
-  flowChart.off('click');
-  flowChart.on('click', (params) => {
-    if (!params || !params.seriesName) return;
-    setActiveSymbol(params.seriesName, true);
-  });
 }
 
 function renderDetailChart(symbol, rows) {
@@ -350,7 +470,7 @@ function renderDetailChart(symbol, rows) {
           name: '순위',
           data: ranks,
           showSymbol: false,
-          smooth: 0.2,
+          smooth: false,
           sampling: 'lttb',
           lineStyle: { color: '#7cf5ff', width: 2.2 },
         },
@@ -360,7 +480,7 @@ function renderDetailChart(symbol, rows) {
           yAxisIndex: 1,
           data: caps,
           showSymbol: false,
-          smooth: 0.15,
+          smooth: false,
           sampling: 'lttb',
           lineStyle: { color: '#ffd166', width: 1.8 },
           areaStyle: { color: 'rgba(255,209,102,0.14)' },
@@ -399,20 +519,32 @@ async function loadTimeline() {
   }
   timelineAbortController = new AbortController();
 
-  let res;
+  const flowMaxPoints = suggestedFlowMaxPoints();
+  const query = new URLSearchParams();
+  query.set('limit', String(DISPLAY_LIMIT));
+  query.set('days', String(LOOKBACK_DAYS));
+  query.set('max_points', String(flowMaxPoints));
+  query.set('include_caps', '0');
+
+  let timelineRes;
+  let latestRes;
   try {
-    res = await fetch(`/api/ranks/timeline?limit=${DISPLAY_LIMIT}&days=${LOOKBACK_DAYS}`, {
-      signal: timelineAbortController.signal,
-    });
+    [timelineRes, latestRes] = await Promise.all([
+      fetch(`/api/ranks/timeline?${query.toString()}`, {
+        signal: timelineAbortController.signal,
+      }),
+      fetch(`/api/ranks/latest?limit=${DISPLAY_LIMIT}`),
+    ]);
   } catch (err) {
     if (err && err.name === 'AbortError') return;
     setTableMessage('타임라인 로딩 중 네트워크 오류가 발생했습니다');
     return;
   }
-  if (!res.ok) {
-    let message = `타임라인을 불러오지 못했습니다 (HTTP ${res.status})`;
+
+  if (!timelineRes.ok) {
+    let message = `타임라인을 불러오지 못했습니다 (HTTP ${timelineRes.status})`;
     try {
-      const data = await res.json();
+      const data = await timelineRes.json();
       if (data && data.detail) message = String(data.detail);
     } catch (_) {
       // keep fallback
@@ -421,17 +553,31 @@ async function loadTimeline() {
     return;
   }
 
-  timeline = await res.json();
+  timeline = await timelineRes.json();
   if (!timeline.dates || !timeline.dates.length) {
     setTableMessage('타임라인 데이터가 없습니다');
     return;
   }
 
+  timeline.series.forEach((item) => {
+    item.plotRanks = item.ranks.map((value) => (value === null || value === undefined ? '-' : value));
+  });
   seriesBySymbol = new Map(timeline.series.map((item) => [item.symbol, item]));
+
+  let latestAsOfDate = null;
+  if (latestRes.ok) {
+    const latestData = await latestRes.json();
+    setLatestSnapshot(latestData);
+    latestAsOfDate = latestData && latestData.as_of_date ? latestData.as_of_date : null;
+  } else {
+    latestSnapshotRows = [];
+    latestSnapshotBySymbol = new Map();
+    latestTotalMarketCap = null;
+  }
 
   const lastIndex = timeline.dates.length - 1;
   currentDateIndex = lastIndex;
-  asOfLabel.textContent = timeline.dates[lastIndex];
+  asOfLabel.textContent = latestAsOfDate || timeline.dates[lastIndex];
 
   updateLatestTag();
 
@@ -439,6 +585,7 @@ async function loadTimeline() {
   activeSymbol = latestRows.length ? latestRows[0].symbol : null;
   flowSelectedLabel.textContent = activeSymbol || '선을 클릭하거나 심볼을 입력해 종목 고정';
 
+  flowBaseSignature = '';
   renderFlowChart();
   renderSnapshot();
   if (activeSymbol) await loadHistory(activeSymbol);
@@ -534,8 +681,13 @@ async function loadHistory(symbol) {
 }
 
 window.addEventListener('DOMContentLoaded', () => {
-  flowChart = echarts.init(document.getElementById('flow-chart'), null, { renderer: 'canvas' });
+  flowChart = echarts.init(flowChartElement, null, { renderer: 'canvas' });
   detailChart = echarts.init(document.getElementById('detail-chart'), null, { renderer: 'canvas' });
+
+  flowChart.on('click', (params) => {
+    if (!params || !params.seriesName) return;
+    setActiveSymbol(params.seriesName, true);
+  });
 
   loadTimeline();
   loadEntrants();

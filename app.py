@@ -1,4 +1,5 @@
 import json
+import math
 import os
 import sqlite3
 import threading
@@ -22,6 +23,8 @@ DEFAULT_LIMIT = 260
 MAX_LIMIT = 260
 MAX_EVENT_DAYS = 5475
 MAX_EVENT_ITEMS = 500
+TIMELINE_MAX_POINTS_DEFAULT = 1200
+SQLITE_IN_CLAUSE_CHUNK_SIZE = 700
 
 
 def env_bool(key: str, default: bool) -> bool:
@@ -229,6 +232,20 @@ def fetch_recent_dates(conn: sqlite3.Connection, days: int) -> List[str]:
     return sorted([r["as_of_date"] for r in rows])
 
 
+def downsample_dates(dates: List[str], max_points: int) -> Tuple[List[str], int]:
+    if not dates:
+        return [], 1
+    if max_points <= 0 or len(dates) <= max_points:
+        return dates, 1
+
+    # Keep a representative stride across the whole range while always preserving the latest date.
+    step = max(1, math.ceil((len(dates) - 1) / max(1, (max_points - 1))))
+    sampled = dates[::step]
+    if sampled[-1] != dates[-1]:
+        sampled.append(dates[-1])
+    return sampled, step
+
+
 def fetch_event_dates(conn: sqlite3.Connection, days: Optional[int]) -> List[str]:
     if days is None:
         rows = conn.execute("SELECT DISTINCT as_of_date FROM ranks ORDER BY as_of_date").fetchall()
@@ -242,20 +259,27 @@ def fetch_event_dates(conn: sqlite3.Connection, days: Optional[int]) -> List[str
     return sorted([r[0] for r in rows])
 
 
-def fetch_timeline_rows(conn: sqlite3.Connection, dates: List[str], limit: int) -> List[sqlite3.Row]:
+def fetch_timeline_rows(
+    conn: sqlite3.Connection, dates: List[str], limit: int, include_caps: bool
+) -> List[sqlite3.Row]:
     if not dates:
         return []
-    return conn.execute(
-        """
-        SELECT as_of_date, symbol, rank, market_cap
+    rows: List[sqlite3.Row] = []
+    selected_columns = "as_of_date, symbol, rank, market_cap" if include_caps else "as_of_date, symbol, rank"
+    for start_idx in range(0, len(dates), SQLITE_IN_CLAUSE_CHUNK_SIZE):
+        date_chunk = dates[start_idx : start_idx + SQLITE_IN_CLAUSE_CHUNK_SIZE]
+        placeholders = ",".join(["?"] * len(date_chunk))
+        query = f"""
+        SELECT {selected_columns}
         FROM ranks
-        WHERE as_of_date >= ?
-          AND as_of_date <= ?
+        WHERE as_of_date IN ({placeholders})
           AND rank <= ?
         ORDER BY as_of_date ASC, rank ASC
-        """,
-        (dates[0], dates[-1], limit),
-    ).fetchall()
+        """
+        chunk_rows = conn.execute(query, (*date_chunk, limit)).fetchall()
+        rows.extend(chunk_rows)
+    rows.sort(key=lambda row: (row["as_of_date"], row["rank"]))
+    return rows
 
 
 def fetch_rank_maps(conn: sqlite3.Connection, dates: List[str], max_rank: int) -> Dict[str, Dict[str, int]]:
@@ -385,20 +409,30 @@ def api_rank_history(symbol: str, days: int = Query(365, ge=1, le=5475)):
 def api_ranks_timeline(
     limit: int = Query(DEFAULT_LIMIT, ge=1, le=MAX_LIMIT),
     days: int = Query(120, ge=2, le=5475),
+    max_points: int = Query(TIMELINE_MAX_POINTS_DEFAULT, ge=120, le=5475),
+    include_caps: bool = Query(True),
 ):
-    key = cache_key("timeline", limit, days)
+    key = cache_key("timeline", limit, days, max_points, include_caps)
     cached = cache_get(key)
     if cached is not None:
         return cached
 
     ko_map = load_company_names_ko()
     with get_conn() as conn:
-        dates = fetch_recent_dates(conn, days)
-        if not dates:
+        full_dates = fetch_recent_dates(conn, days)
+        if not full_dates:
             raise HTTPException(status_code=404, detail="No data available")
-        rows = fetch_timeline_rows(conn, dates, limit)
+        dates, sampling_step = downsample_dates(full_dates, max_points)
+        rows = fetch_timeline_rows(conn, dates, limit, include_caps)
     if not rows:
-        result = {"dates": dates, "series": [], "limit": limit}
+        result = {
+            "dates": dates,
+            "series": [],
+            "limit": limit,
+            "total_dates": len(full_dates),
+            "sampling_step": sampling_step,
+            "include_caps": include_caps,
+        }
         cache_set(key, result)
         return result
 
@@ -407,15 +441,18 @@ def api_ranks_timeline(
     for row in rows:
         symbol = row["symbol"]
         if symbol not in series_map:
-            series_map[symbol] = {
+            base_series: Dict[str, Any] = {
                 "symbol": symbol,
                 "name": display_name(symbol, symbol, ko_map),
                 "ranks": [None] * len(dates),
-                "caps": [None] * len(dates),
             }
+            if include_caps:
+                base_series["caps"] = [None] * len(dates)
+            series_map[symbol] = base_series
         date_idx = idx_by_date[row["as_of_date"]]
         series_map[symbol]["ranks"][date_idx] = row["rank"]
-        series_map[symbol]["caps"][date_idx] = row["market_cap"]
+        if include_caps:
+            series_map[symbol]["caps"][date_idx] = row["market_cap"]
 
     def sort_key(item: Dict) -> tuple:
         ranks = item["ranks"]
@@ -428,6 +465,9 @@ def api_ranks_timeline(
         "dates": dates,
         "series": series,
         "limit": limit,
+        "total_dates": len(full_dates),
+        "sampling_step": sampling_step,
+        "include_caps": include_caps,
     }
     cache_set(key, result)
     return result
