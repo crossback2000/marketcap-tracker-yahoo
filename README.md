@@ -117,6 +117,11 @@ docker compose run --rm job python fetch_and_store.py --universe-size 300 --stor
 docker compose run --rm job python fetch_and_store.py --dry-run --universe-size 300 --symbols-limit 40 --days 180
 ```
 
+한국어 회사명 갱신(권장 월 1회):
+```bash
+docker compose run --rm job python scripts/fetch_naver_usa_company_names_ko.py --limit 300
+```
+
 ### 9-4. 데이터 파일 위치
 - 호스트의 `./data`가 컨테이너 `/app/data`에 마운트됩니다.
 - 따라서 `marketcap.db`, `company_names_ko.json`은 컨테이너 재생성 후에도 유지됩니다.
