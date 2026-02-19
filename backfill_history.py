@@ -10,11 +10,11 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument(
         "--universe-size",
         type=int,
-        default=260,
+        default=300,
         help="How many top symbols to request from Yahoo screener.",
     )
     parser.add_argument("--symbols-limit", type=int, default=None, help="Use only first N symbols.")
-    parser.add_argument("--store-limit", type=int, default=260, help="Store top N ranks per day.")
+    parser.add_argument("--store-limit", type=int, default=300, help="Store top N ranks per day.")
     parser.add_argument("--dry-run", action="store_true", help="Preview only.")
     return parser.parse_args()
 

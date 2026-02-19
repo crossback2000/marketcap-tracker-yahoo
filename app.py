@@ -19,8 +19,8 @@ load_dotenv()
 DB_PATH = Path(__file__).parent / "data" / "marketcap.db"
 STATIC_DIR = Path(__file__).parent / "static"
 COMPANY_NAME_KO_PATH = Path(__file__).parent / "data" / "company_names_ko.json"
-DEFAULT_LIMIT = 260
-MAX_LIMIT = 260
+DEFAULT_LIMIT = 300
+MAX_LIMIT = 300
 MAX_EVENT_DAYS = 5475
 MAX_EVENT_ITEMS = 500
 TIMELINE_MAX_POINTS_DEFAULT = 1200

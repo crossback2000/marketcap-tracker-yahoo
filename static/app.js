@@ -1,4 +1,4 @@
-const DISPLAY_LIMIT = 260;
+const DISPLAY_LIMIT = 300;
 const LOOKBACK_DAYS = 5475;
 const BIG_MOVER_THRESHOLD = 5;
 const FLOW_MAX_POINTS_MIN = 480;
@@ -594,7 +594,7 @@ async function loadTimeline() {
 function buildEventQuery(endpointType) {
   const params = new URLSearchParams();
   params.set('limit', String(DISPLAY_LIMIT));
-  params.set('max_events', eventMaxItemsSelect.value || '260');
+  params.set('max_events', eventMaxItemsSelect.value || '300');
 
   const daysValue = eventDaysSelect.value;
   if (daysValue && daysValue !== 'all') {

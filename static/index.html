@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>미국 시가총액 상위 260위 추적기</title>
+  <title>미국 시가총액 상위 300위 추적기</title>
   <link rel="stylesheet" href="/static/style.css" />
   <script src="/static/vendor/echarts-5.5.1.min.js"></script>
 </head>
@@ -12,7 +12,7 @@
     <header>
       <div>
         <div class="badge">시가총액 · 미국</div>
-        <h1>상위 260위 흐름 모니터</h1>
+        <h1>상위 300위 흐름 모니터</h1>
         <div class="stat-row">
           <span>최근 갱신일: <strong id="as-of">—</strong></span>
           <span id="latest-tag" class="latest-tag"></span>
@@ -36,6 +36,7 @@
             <option value="150">상위 150</option>
             <option value="200">상위 200</option>
             <option value="260">상위 260</option>
+            <option value="300">상위 300</option>
           </select>
         </label>
         <label class="control-field control-search">
@@ -48,13 +49,13 @@
       </div>
       <div class="stat-row controls-stats">
         <span>기준 날짜: <strong id="selected-date">—</strong></span>
-        <span>상위 260위 시총 합계: <strong id="top-total">—</strong></span>
+        <span>상위 300위 시총 합계: <strong id="top-total">—</strong></span>
       </div>
     </div>
 
     <div class="card flow-card flow-main">
       <div class="chart-header">
-        <h2>상위 260위 순위 흐름</h2>
+        <h2>상위 300위 순위 흐름</h2>
         <div class="legend"><span class="legend-dot legend-dot-accent"></span><span id="flow-selected">선을 클릭하거나 심볼을 입력해 종목 고정</span></div>
       </div>
       <div class="chart-wrap">
@@ -65,7 +66,7 @@
     <div class="grid">
       <div class="card">
         <div class="chart-header">
-          <h2>상위 260위 일일 현황</h2>
+          <h2>상위 300위 일일 현황</h2>
           <div class="legend"><span class="legend-dot"></span><span>행 클릭: 종목 상세 보기</span></div>
         </div>
         <div class="table-wrap">
@@ -111,7 +112,8 @@
               <option value="50">50건</option>
               <option value="100">100건</option>
               <option value="200">200건</option>
-              <option value="260" selected>260건</option>
+              <option value="260">260건</option>
+              <option value="300" selected>300건</option>
             </select>
           </label>
         </div>
@@ -119,7 +121,7 @@
       <div class="grid grid-events">
         <div>
           <h2>신규 진입</h2>
-          <small>상위 260위 안으로 새롭게 들어온 종목</small>
+          <small>상위 300위 안으로 새롭게 들어온 종목</small>
           <div class="list event-list event-list-block" id="entrants"></div>
         </div>
         <div>

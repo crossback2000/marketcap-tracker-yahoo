@@ -11,8 +11,8 @@ from yfinance import EquityQuery
 from dotenv import load_dotenv
 
 DB_PATH = Path(__file__).parent / "data" / "marketcap.db"
-DEFAULT_TARGET_TOP = 260
-DEFAULT_UNIVERSE_SIZE = 260
+DEFAULT_TARGET_TOP = 300
+DEFAULT_UNIVERSE_SIZE = 300
 
 
 class ConfigError(Exception):
